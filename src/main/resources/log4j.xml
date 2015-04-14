@@ -22,8 +22,8 @@
     <logger name="com.gargoylesoftware.htmlunit">
         <level value="FATAL"/>
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="APPLOGFILE"/>
-    </logger>
+<!--         <appender-ref ref="APPLOGFILE"/>
+ -->    </logger>
     <logger name="com.gargoylesoftware.htmlunit.javascript">
         <level value="FATAL"/>
         <appender-ref ref="CONSOLE"/>
