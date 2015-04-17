@@ -16,6 +16,8 @@ public class MainEntrypoint {
 	        c = new PiranhaAndroidClient(ip, 7100, true);
 	        boolean ret1 = c.robotium().waiter().waitForViewToBeEnabled(ControlType.TEXT, "</#JoinMeetingId/>", 30);
 	        if(ret1){
+	        		String imageStr = c.robotium().utils().takeScreenShot();
+	        		logger.info("Image string : %s", imageStr);
 	        		logger.info("Clear Join Meeting TextBox");
 		        c.robotium().setter().clearEditText("</#JoinMeetingId/>");
         			
