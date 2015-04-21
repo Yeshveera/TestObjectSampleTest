@@ -32,6 +32,8 @@ public class BaseTest extends Assert {
 	public static SYSTEMENV systemenv;
 	
 	protected CustomLogger logger = CustomLogger.getLogger();
+	
+	protected String TESTOBJECT_APIKEY;
 
 	private static String currentTestName = null;
 	private static final String TESTREPORTDIR = new File(System.getProperty("user.dir") , "test-output").toString();
@@ -71,6 +73,7 @@ public class BaseTest extends Assert {
     	testHost1 = TestProperties.getProperty("TestData.AFTHOST.1");
     	MIN_TIME = TestProperties.getInt("timeout.min");
     	MAX_TIME = TestProperties.getInt("timeout.max");
+    	TESTOBJECT_APIKEY = TestProperties.getProperty("TestObject.APIKEY");
      }
     
 //    @BeforeSuite
