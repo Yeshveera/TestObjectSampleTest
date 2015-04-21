@@ -1,4 +1,4 @@
-Sample Piranha TestNg project
+Sample Piranha TestObject project
 ---
 
 This contains the source code for running sample [Piranha](http://bamboo2.ops.expertcity.com:8085/browse/G2MAUTOMATIONTEST-G2MEPATESTSDEV/latest/artifact/JOB1/Master-Piranha-site/index.html) tests using [Testng](http://www.testng.org).
@@ -9,7 +9,7 @@ To compile run:
 
 To run a single test, run:
 
-    mvn -Dtest=FirstiOSTest test
+    mvn -Dtest=First* test
 
 multiple test run:
 
@@ -24,6 +24,6 @@ All reports and screenshot are in test-output directory. test-output/html has th
 
 run following command to open the html report after test run:
 
-    mvn clean -Dtest=FirstiOSTest,Second* test && open test-output/html/index.html 
+    mvn -Dtest=First* test && open test-output/html/index.html 
 
 

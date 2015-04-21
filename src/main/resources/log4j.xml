@@ -11,7 +11,7 @@
         <param name="Append" value="true" />
         <param name="MaxFileSize" value="3000KB" />
         <layout class="org.apache.log4j.PatternLayout">
-            <param value="[AppiumAutomation] - %d{ABSOLUTE} [%t] %-5p %c{1} - %m%n" name="ConversionPattern"/>
+            <param value="[PiranhaAutomation] - %d{ABSOLUTE} [%t] %-5p %c{1} - %m%n" name="ConversionPattern"/>
         </layout>
     </appender>
     <logger name="org.openqa.selenium">
@@ -29,9 +29,15 @@
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="APPLOGFILE"/>
     </logger>
+    <logger name="com.sun.jersey">
+        <level value="FATAL"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="APPLOGFILE"/>
+    </logger>
     <root>
         <level value="info"/>
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="APPLOGFILE"/>
     </root>
+    
 </log4j:configuration>
