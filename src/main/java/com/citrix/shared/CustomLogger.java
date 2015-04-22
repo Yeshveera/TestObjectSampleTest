@@ -105,6 +105,14 @@ public class CustomLogger {
         return this;
     }
 
+    
+    public CustomLogger clearAllTags() {
+
+        _tags.clear();
+        _cachedTag = _formatTags();
+
+        return this;
+    }
     /**
      * Output a formatted test name.  The test will have the name centered between bars on its own
      * lines.

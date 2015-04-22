@@ -23,6 +23,9 @@ import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+import com.citrix.shared.CustomLogger;
+import com.citrixonline.piranha.COLTimeUtils;
+import com.citrixonline.piranha.androidclient.PiranhaAndroidClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -30,6 +33,7 @@ import com.google.gson.reflect.TypeToken;
 public class TestObjectPiranha {
 
 	public static String TESTOBJECT_BASE_URL = "https://app.testobject.com:443/api/";
+	protected CustomLogger logger = CustomLogger.getLogger();
 
 	public static void main(String... args) throws IOException {
 
@@ -206,4 +210,16 @@ public class TestObjectPiranha {
 		return sessionId;
 	}
 
+	public PiranhaAndroidClient getAndroidClient(long WaitInMilliSeconds) {
+        int port = getPort();
+        String host = "localhost";
+
+        logger.info("TestObject Piranha Session Started at %s:%s" , host, port);
+        PiranhaAndroidClient c = new PiranhaAndroidClient(host, port, true);
+        
+        logger.info("Hard Wait for %d Seconds to let app start in remote device" , WaitInMilliSeconds/1000);
+        COLTimeUtils.sleep(WaitInMilliSeconds);
+        
+        return c;
+	}
 }
