@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[Using Property file : config.properties<br/>]]>
+    </line>
+    <line>
+      <![CDATA[
+
+  ===============================================================
+  com.citrix.testObject.g2m.piranha.FirstTest#FirstG2MAndroidTest
+  ===============================================================
+<br/>]]>
+    </line>
+    <line>
+      <![CDATA[<HTC_Nexus_9_real> - Getting Device 'HTC_Nexus_9_real' from TestObject<br/>]]>
+    </line>
+    <line>
+      <![CDATA[TestObject Piranha Session Started at localhost:65300<br/>]]>
+    </line>
+    <line>
+      <![CDATA[Hard Wait for 30 Seconds to let app start in remote device<br/>]]>
+    </line>
+    <line>
+      <![CDATA[[debug]<HTC_Nexus_9_real> - Screenshot can be found here:  /Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_27.png<br/>]]>
+    </line>
+    <line>
+      <![CDATA[<p><img width="256" src="/Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_27.png" alt="screenshot at Tue Apr 21 21:26:28 HST 2015"/></p></a><br />]]>
+    </line>
+    <line>
+      <![CDATA[<HTC_Nexus_9_real> - Clear Join Meeting TextBox<br/>]]>
+    </line>
+    <line>
+      <![CDATA[<HTC_Nexus_9_real> - Enter Join Meeting TextBox<br/>]]>
+    </line>
+    <line>
+      <![CDATA[[debug]<HTC_Nexus_9_real> - Screenshot can be found here:  /Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_37.png<br/>]]>
+    </line>
+    <line>
+      <![CDATA[<p><img width="256" src="/Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_37.png" alt="screenshot at Tue Apr 21 21:26:38 HST 2015"/></p></a><br />]]>
+    </line>
+    <line>
+      <![CDATA[[debug]<HTC_Nexus_9_real> - Screenshot can be found here:  /Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_45.png<br/>]]>
+    </line>
+    <line>
+      <![CDATA[<p><img width="256" src="/Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_45.png" alt="screenshot at Tue Apr 21 21:26:45 HST 2015"/></p></a><br />]]>
+    </line>
+    <line>
+      <![CDATA[<HTC_Nexus_9_real> - Wait for Error Dialog<br/>]]>
+    </line>
+    <line>
+      <![CDATA[<HTC_Nexus_9_real> - Click Join Image Button<br/>]]>
+    </line>
+    <line>
+      <![CDATA[[debug]<HTC_Nexus_9_real> - Screenshot can be found here:  /Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_54.png<br/>]]>
+    </line>
+    <line>
+      <![CDATA[<p><img width="256" src="/Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_54.png" alt="screenshot at Tue Apr 21 21:26:54 HST 2015"/></p></a><br />]]>
+    </line>
+    <line>
+      <![CDATA[<HTC_Nexus_9_real> - Click Ok Button in Error Dialog<br/>]]>
+    </line>
+    <line>
+      <![CDATA[<HTC_Nexus_9_real> - Closing TestObject Session<br/>]]>
+    </line>
+    <line>
+      <![CDATA[
+---------------------------------------------------------------------------------------------------------------------------
+############### Ending Test  :-  com.citrix.testObject.g2m.piranha.FirstTest#FirstG2MAndroidTest : Passed.  ###############
+---------------------------------------------------------------------------------------------------------------------------<br/>]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="135099" started-at="2015-04-22T07:24:50Z" finished-at="2015-04-22T07:27:05Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="135099" started-at="2015-04-22T07:24:50Z" finished-at="2015-04-22T07:27:05Z">
+      <class name="com.citrix.testObject.g2m.piranha.FirstTest">
+        <test-method status="PASS" signature="handleTestStart(java.lang.reflect.Method)[pri:0, instance:com.citrix.testObject.g2m.piranha.FirstTest@49b5a254]" name="handleTestStart" is-config="true" duration-ms="4" started-at="2015-04-21T21:24:50Z" finished-at="2015-04-21T21:24:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.citrix.testObject.g2m.piranha.FirstTest.FirstG2MAndroidTest(java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[
+
+  ===============================================================
+  com.citrix.testObject.g2m.piranha.FirstTest#FirstG2MAndroidTest
+  ===============================================================
+<br/>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- handleTestStart -->
+        <test-method status="PASS" signature="FirstG2MAndroidTest(java.lang.String)[pri:0, instance:com.citrix.testObject.g2m.piranha.FirstTest@49b5a254]" name="FirstG2MAndroidTest" duration-ms="135078" started-at="2015-04-21T21:24:50Z" data-provider="getDeviceID" finished-at="2015-04-21T21:27:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[HTC_Nexus_9_real]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<HTC_Nexus_9_real> - Getting Device 'HTC_Nexus_9_real' from TestObject<br/>]]>
+            </line>
+            <line>
+              <![CDATA[TestObject Piranha Session Started at localhost:65300<br/>]]>
+            </line>
+            <line>
+              <![CDATA[Hard Wait for 30 Seconds to let app start in remote device<br/>]]>
+            </line>
+            <line>
+              <![CDATA[[debug]<HTC_Nexus_9_real> - Screenshot can be found here:  /Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_27.png<br/>]]>
+            </line>
+            <line>
+              <![CDATA[<p><img width="256" src="/Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_27.png" alt="screenshot at Tue Apr 21 21:26:28 HST 2015"/></p></a><br />]]>
+            </line>
+            <line>
+              <![CDATA[<HTC_Nexus_9_real> - Clear Join Meeting TextBox<br/>]]>
+            </line>
+            <line>
+              <![CDATA[<HTC_Nexus_9_real> - Enter Join Meeting TextBox<br/>]]>
+            </line>
+            <line>
+              <![CDATA[[debug]<HTC_Nexus_9_real> - Screenshot can be found here:  /Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_37.png<br/>]]>
+            </line>
+            <line>
+              <![CDATA[<p><img width="256" src="/Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_37.png" alt="screenshot at Tue Apr 21 21:26:38 HST 2015"/></p></a><br />]]>
+            </line>
+            <line>
+              <![CDATA[[debug]<HTC_Nexus_9_real> - Screenshot can be found here:  /Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_45.png<br/>]]>
+            </line>
+            <line>
+              <![CDATA[<p><img width="256" src="/Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_45.png" alt="screenshot at Tue Apr 21 21:26:45 HST 2015"/></p></a><br />]]>
+            </line>
+            <line>
+              <![CDATA[<HTC_Nexus_9_real> - Wait for Error Dialog<br/>]]>
+            </line>
+            <line>
+              <![CDATA[<HTC_Nexus_9_real> - Click Join Image Button<br/>]]>
+            </line>
+            <line>
+              <![CDATA[[debug]<HTC_Nexus_9_real> - Screenshot can be found here:  /Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_54.png<br/>]]>
+            </line>
+            <line>
+              <![CDATA[<p><img width="256" src="/Users/parameshwaranmurli/Dev/git/TestObjectSampleTest/test-output/screenshots/21_04_2015_09_26_54.png" alt="screenshot at Tue Apr 21 21:26:54 HST 2015"/></p></a><br />]]>
+            </line>
+            <line>
+              <![CDATA[<HTC_Nexus_9_real> - Click Ok Button in Error Dialog<br/>]]>
+            </line>
+            <line>
+              <![CDATA[<HTC_Nexus_9_real> - Closing TestObject Session<br/>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- FirstG2MAndroidTest -->
+        <test-method status="PASS" signature="handleTestEnd(org.testng.ITestResult)[pri:0, instance:com.citrix.testObject.g2m.piranha.FirstTest@49b5a254]" name="handleTestEnd" is-config="true" duration-ms="1" started-at="2015-04-21T21:27:05Z" finished-at="2015-04-21T21:27:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=FirstG2MAndroidTest status=SUCCESS method=FirstTest.FirstG2MAndroidTest(java.lang.String)[pri:0, instance:com.citrix.testObject.g2m.piranha.FirstTest@49b5a254] output=<HTC_Nexus_9_real> - Getting Device 'HTC_Nexus_9_real' from TestObject<br/>]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[
+---------------------------------------------------------------------------------------------------------------------------
+############### Ending Test  :-  com.citrix.testObject.g2m.piranha.FirstTest#FirstG2MAndroidTest : Passed.  ###############
+---------------------------------------------------------------------------------------------------------------------------<br/>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- handleTestEnd -->
+      </class> <!-- com.citrix.testObject.g2m.piranha.FirstTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

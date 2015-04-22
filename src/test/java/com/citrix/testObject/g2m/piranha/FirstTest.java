@@ -53,21 +53,20 @@ public class FirstTest extends TestObjectAndroidTest{
 	
 	  @Test(dataProvider = "getDeviceID")
 	  public void FirstG2MAndroidTest(String deviceID){
-		TestObjectPiranha p = null;
+		TestObjectPiranha testObjectPiranha = null;
 		try {
-			
 			logger.clearAllTags();
 			logger.addTag(deviceID);			
-			p = setup(deviceID);
-			runTest(p);
+			testObjectPiranha = setup(deviceID);
+			runTest(testObjectPiranha);
 		}finally{
-			tearDown(p);
+			tearDown(testObjectPiranha);
 		}
 	  }
 	  
-	  private void runTest(TestObjectPiranha p){
+	  private void runTest(TestObjectPiranha testObjectPiranha){
 		  	
-	        final PiranhaAndroidClient c  = p.getAndroidClient(30*1000);
+	        final PiranhaAndroidClient c  = testObjectPiranha.getAndroidClient(30*1000);
 			boolean ret1 = c.robotium().waiter().waitForViewToBeEnabled(ControlType.TEXT, "</#JoinMeetingId/>", 30);
 	        if(ret1){
 	        		takeScreenShot(c);

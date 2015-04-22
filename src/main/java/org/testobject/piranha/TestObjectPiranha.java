@@ -71,6 +71,7 @@ public class TestObjectPiranha {
 	private String sessionId;
 	private Server server;
 	private int port;
+	private PiranhaAndroidClient piranhaClient;
 
 	public TestObjectPiranha(DesiredCapabilities desiredCapabilities) {
 		this(TESTOBJECT_BASE_URL, desiredCapabilities);
@@ -104,6 +105,7 @@ public class TestObjectPiranha {
 	public void startProxyServer(String sessionId) {
 		port = findFreePort();
 		server = new Server(port);
+		logger.info("Starting proxy at port '%d' , for sessionId '%s'", port , sessionId);
 		ServletContextHandler handler = new ServletContextHandler();
 		handler.setContextPath("");
 		// adds Jersey Servlet with a customized ResourceConfig
@@ -211,15 +213,18 @@ public class TestObjectPiranha {
 	}
 
 	public PiranhaAndroidClient getAndroidClient(long WaitInMilliSeconds) {
+		if(piranhaClient != null){
+			return piranhaClient;
+		}
         int port = getPort();
         String host = "localhost";
 
         logger.info("TestObject Piranha Session Started at %s:%s" , host, port);
-        PiranhaAndroidClient c = new PiranhaAndroidClient(host, port, true);
+        piranhaClient = new PiranhaAndroidClient(host, port, true);
         
         logger.info("Hard Wait for %d Seconds to let app start in remote device" , WaitInMilliSeconds/1000);
         COLTimeUtils.sleep(WaitInMilliSeconds);
         
-        return c;
+        return piranhaClient;
 	}
 }
