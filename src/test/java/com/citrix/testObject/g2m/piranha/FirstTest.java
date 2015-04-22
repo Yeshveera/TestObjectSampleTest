@@ -1,6 +1,5 @@
 package com.citrix.testObject.g2m.piranha;
 
-import groovy.transform.Synchronized;
 
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
@@ -57,11 +56,8 @@ public class FirstTest extends TestObjectAndroidTest{
 		TestObjectPiranha p = null;
 		try {
 			
-			synchronized (deviceID) {
-				logger.clearAllTags();
-				logger.addTag(deviceID);
-			}
-			
+			logger.clearAllTags();
+			logger.addTag(deviceID);			
 			p = setup(deviceID);
 			runTest(p);
 		}finally{
@@ -72,9 +68,8 @@ public class FirstTest extends TestObjectAndroidTest{
 	  private void runTest(TestObjectPiranha p){
 		  	
 	        final PiranhaAndroidClient c  = p.getAndroidClient(30*1000);
-			boolean ret1 = c  .robotium().waiter().waitForViewToBeEnabled(ControlType.TEXT, "</#JoinMeetingId/>", 30);
+			boolean ret1 = c.robotium().waiter().waitForViewToBeEnabled(ControlType.TEXT, "</#JoinMeetingId/>", 30);
 	        if(ret1){
-
 	        		takeScreenShot(c);
 	        		logger.info("Clear Join Meeting TextBox");
 		        c.robotium().setter().clearEditText("</#JoinMeetingId/>");
@@ -82,7 +77,6 @@ public class FirstTest extends TestObjectAndroidTest{
 		        logger.info("Enter Join Meeting TextBox");
 		        c.robotium().setter().setText("</#JoinMeetingId/>", "555-000-000");
       			takeScreenShot(c);
-
 	        }
 	        	
 	        takeScreenShot(c);
