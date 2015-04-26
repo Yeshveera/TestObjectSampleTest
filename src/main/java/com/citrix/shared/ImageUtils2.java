@@ -11,6 +11,7 @@ import java.io.File;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
+import javax.xml.bind.DatatypeConverter;
 
 @SuppressWarnings("restriction")
 public class ImageUtils2 {
@@ -25,8 +26,9 @@ public class ImageUtils2 {
         BufferedImage image = null;
         byte[] imageByte;
         try {
-            BASE64Decoder decoder = new BASE64Decoder();
-            imageByte = decoder.decodeBuffer(imageString);
+//            BASE64Decoder decoder = new BASE64Decoder();
+//            imageByte = decoder.decodeBuffer(imageString);
+            imageByte = DatatypeConverter.parseBase64Binary(imageString);
             ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
             image = ImageIO.read(bis);
             bis.close();
@@ -50,9 +52,10 @@ public class ImageUtils2 {
             ImageIO.write(image, type, bos);
             byte[] imageBytes = bos.toByteArray();
 
-            BASE64Encoder encoder = new BASE64Encoder();
-            imageString = encoder.encode(imageBytes);
+//            BASE64Encoder encoder = new BASE64Encoder();
+//            imageString = encoder.encode(imageBytes);
 
+            imageString = DatatypeConverter.printBase64Binary(imageBytes);
             bos.close();
         } catch (IOException e) {
             e.printStackTrace();

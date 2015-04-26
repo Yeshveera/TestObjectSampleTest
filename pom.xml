@@ -23,6 +23,13 @@
 		</snapshotRepository>
 	</distributionManagement>   
 
+    <repositories>
+        <repository>
+            <id>testobject</id>
+            <url>http://nexus.testobject.org/nexus/content/repositories/testobject-public-repo/</url>
+        </repository>
+    </repositories>
+    
   <properties>
     <project.java.compiler.version>1.7</project.java.compiler.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,6 +49,11 @@
             </exclusions>
         </dependency>
         
+        <dependency>
+            <groupId>com.testobject.piranha</groupId>
+            <artifactId>api</artifactId>
+            <version>0.0.2</version>
+        </dependency>
         
         <dependency>
             <groupId>com.citrixonline.piranha</groupId>

@@ -33,7 +33,7 @@ public class BaseTest extends Assert {
 	
 	protected CustomLogger logger = CustomLogger.getLogger();
 	
-	protected String TESTOBJECT_APIKEY;
+	protected static String TESTOBJECT_APIKEY;
 
 	private static String currentTestName = null;
 	private static final String TESTREPORTDIR = new File(System.getProperty("user.dir") , "test-output").toString();

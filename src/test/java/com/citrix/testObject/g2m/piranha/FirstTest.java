@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -15,7 +17,9 @@ import javax.imageio.ImageIO;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 import org.testobject.piranha.DesiredCapabilities;
+import org.testobject.piranha.TestObjectDevice;
 import org.testobject.piranha.TestObjectPiranha;
+import org.testobject.piranha.TestObjectPiranha2;
 
 import com.citrix.shared.BaseLogger;
 import com.citrix.shared.ImageUtils2;
@@ -28,11 +32,18 @@ import com.thoughtworks.selenium.Wait;
 
 public class FirstTest extends TestObjectAndroidTest{
 
-	public TestObjectPiranha setup(String deviceID) {
+	public TestObjectPiranha2 setup(String deviceID) {
+		boolean isAvailable = checkDeviceIsAvailable(deviceID);
+		if(isAvailable){
+			logger.info("Device '%s' is available", deviceID);
+		} else {
+			logger.error("Device '%s' is Unavailable" , deviceID);
+			fail("Device unavailable");
+		}
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("testobject_api_key", TESTOBJECT_APIKEY);
         capabilities.setCapability("testobject_app_id", "8");
-        capabilities.setCapability("testobject_framework_app_id", "7");
+        capabilities.setCapability("testobject_framework_app_id", "9"); // id 7 should work too
         capabilities.setCapability("testobject_device", deviceID);
         capabilities.setCapability("testobject_suite_name" , "G2M");
         	capabilities.setCapability("testobject_test_name" , "FirstG2MAndroidTest");
@@ -46,14 +57,14 @@ public class FirstTest extends TestObjectAndroidTest{
         capabilities.setCapability("piranha_params", new GsonBuilder().create().toJson(piranhaCaps));
 
         logger.info("Getting Device '%s' from TestObject" , deviceID);
-        TestObjectPiranha testObjectPiranha = new TestObjectPiranha(capabilities);
+        TestObjectPiranha2 testObjectPiranha = new TestObjectPiranha2(capabilities);
         
         return testObjectPiranha;
 	  }
 	
 	  @Test(dataProvider = "getDeviceID")
 	  public void FirstG2MAndroidTest(String deviceID){
-		TestObjectPiranha testObjectPiranha = null;
+		TestObjectPiranha2 testObjectPiranha = null;
 		try {
 			logger.clearAllTags();
 			logger.addTag(deviceID);			
@@ -63,10 +74,10 @@ public class FirstTest extends TestObjectAndroidTest{
 			tearDown(testObjectPiranha);
 		}
 	  }
-	  
-	  private void runTest(TestObjectPiranha testObjectPiranha){
+
+	private void runTest(TestObjectPiranha2 testObjectPiranha){
 		  	
-	        final PiranhaAndroidClient c  = testObjectPiranha.getAndroidClient(30*1000);
+	        final PiranhaAndroidClient c  = testObjectPiranha.getAndroidClient(1*1000);
 			boolean ret1 = c.robotium().waiter().waitForViewToBeEnabled(ControlType.TEXT, "</#JoinMeetingId/>", 30);
 	        if(ret1){
 	        		takeScreenShot(c);
@@ -102,9 +113,9 @@ public class FirstTest extends TestObjectAndroidTest{
 			c.robotium().clicker().clickButton("OK");
 	  }
 
-	  public void tearDown(TestObjectPiranha testObjectPiranha) {
+	  public void tearDown(TestObjectPiranha2 testObjectPiranha) {
           if (testObjectPiranha != null) {
-        	  	logger.info("Closing TestObject Session", testObjectPiranha.getSessionID());
+        	  	logger.info("Closing TestObject Session", testObjectPiranha.getSessionId());
               testObjectPiranha.close();
           }
 	  }
@@ -170,4 +181,14 @@ public class FirstTest extends TestObjectAndroidTest{
 
 	}
 	
+	  
+	private boolean checkDeviceIsAvailable(String deviceID) {
+		for (TestObjectDevice device : TestObjectPiranha.listDevices()) {
+			if (device.isAvailable && device.id.equalsIgnoreCase(deviceID)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }
