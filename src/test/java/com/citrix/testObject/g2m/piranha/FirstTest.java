@@ -1,31 +1,15 @@
 package com.citrix.testObject.g2m.piranha;
 
 
-import java.awt.Desktop;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
-
-import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 import org.testobject.piranha.DesiredCapabilities;
-import org.testobject.piranha.TestObjectDevice;
-import org.testobject.piranha.TestObjectPiranha;
 import org.testobject.piranha.TestObjectPiranha2;
 
-import com.citrix.shared.BaseLogger;
-import com.citrix.shared.ImageUtils2;
 import com.citrixonline.piranha.COLTimeUtils;
 import com.citrixonline.piranha.ControlType;
-import com.citrixonline.piranha.PiranhaAssertionError;
 import com.citrixonline.piranha.androidclient.PiranhaAndroidClient;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.selenium.Wait;
@@ -58,38 +42,36 @@ public class FirstTest extends TestObjectAndroidTest{
 
         logger.info("Getting Device '%s' from TestObject" , deviceID);
         TestObjectPiranha2 testObjectPiranha = new TestObjectPiranha2(capabilities);
-        
+        setTestObjectPiranha(testObjectPiranha);
         return testObjectPiranha;
 	  }
 	
-	  @Test(dataProvider = "getDeviceID")
+
+
+	@Test(dataProvider = "getDeviceID")
 	  public void FirstG2MAndroidTest(String deviceID){
 		TestObjectPiranha2 testObjectPiranha = null;
-		try {
-			logger.clearAllTags();
-			logger.addTag(deviceID);			
-			testObjectPiranha = setup(deviceID);
-			runTest(testObjectPiranha);
-		}finally{
-			tearDown(testObjectPiranha);
-		}
+		logger.clearAllTags();
+		logger.addTag(deviceID);			
+		testObjectPiranha = setup(deviceID);
+		runTest(testObjectPiranha);		
 	  }
 
 	private void runTest(TestObjectPiranha2 testObjectPiranha){
 		  	
-	        final PiranhaAndroidClient c  = testObjectPiranha.getAndroidClient(1*1000);
+	        final PiranhaAndroidClient c  = testObjectPiranha.getAndroidClient();
 			boolean ret1 = c.robotium().waiter().waitForViewToBeEnabled(ControlType.TEXT, "</#JoinMeetingId/>", 30);
 	        if(ret1){
-	        		takeScreenShot(c);
+	        		testObjectPiranha.takeScreenShot();
 	        		logger.info("Clear Join Meeting TextBox");
 		        c.robotium().setter().clearEditText("</#JoinMeetingId/>");
     			
 		        logger.info("Enter Join Meeting TextBox");
 		        c.robotium().setter().setText("</#JoinMeetingId/>", "555-000-000");
-      			takeScreenShot(c);
+        		testObjectPiranha.takeScreenShot();
 	        }
 	        	
-	        takeScreenShot(c);
+    			testObjectPiranha.takeScreenShot();
 			logger.info("Wait for Error Dialog");		
 			String errmsg = "if wait fails restart the instrumentaion \n 'adb -d shell am instrument -w \n -e className com.citrixonline.universal.ui.activities.LauncherActivity \n -e pkgName com.citrixonline.android.gotomeeting com.citrixonline.piranha.androidserver/com.citrixonline.piranha.androidserver.PiranhaAndroidInstrumentation \n";
 			
@@ -106,89 +88,15 @@ public class FirstTest extends TestObjectAndroidTest{
 				}
 			}.wait("Error Dialog did not show up " + errmsg, 60*1000, 10*1000);;
 			COLTimeUtils.sleep(1*1000);
-			takeScreenShot(c);
+    			testObjectPiranha.takeScreenShot();
 
 
 			logger.info("Click Ok Button in Error Dialog");
 			c.robotium().clicker().clickButton("OK");
 	  }
 
-	  public void tearDown(TestObjectPiranha2 testObjectPiranha) {
-          if (testObjectPiranha != null) {
-        	  	logger.info("Closing TestObject Session", testObjectPiranha.getSessionId());
-              testObjectPiranha.close();
-          }
-	  }
+
 	
-	private void openScreenShot(File f) {
-		Desktop dt = Desktop.getDesktop();
-	    try {
-			dt.open(f);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-	}
 
-	public File takeScreenShot(PiranhaAndroidClient c) {
-		String imgstr = null;
-		try {
-			imgstr = c.robotium().utils().takeScreenShot();
-		} catch (Exception e) {
-			logger.error("Unable to Take ScreenShot - Exception");
-			return null;
-		} catch (PiranhaAssertionError e1) {
-			logger.error("Unable to Take ScreenShot - PiranhaAssertionError");
-//			e1.printStackTrace();
-			return null;
-		}
-		if(StringUtils.isBlank(imgstr)){
-			return null;
-		}
-		BufferedImage newImg = ImageUtils2.decodeToImage(imgstr);
-		try {
-			File f = saveFile(newImg);		
-			//openScreenShot(f);
-			return f;
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		logger.error("Screenshot failed");
-		return null;
-	}
-		
-	private File saveFile(BufferedImage screen) throws IOException{
-
-		String fileName = "";
-		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-		File imgFile = new File(getScreenshotsDir() , fileName + formatter.format(calendar.getTime()) + ".png");
-        try {
-			ImageIO.write(screen, "png", imgFile);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(imgFile.exists()){
-			logger.debug("Screenshot can be found here:  %s", imgFile.getAbsolutePath());
-		} else {
-			logger.error("Error in taking screenshot");
-		}
-		BaseLogger.getLogger(this.getClass()).reportScreenShotToTestNgReport(imgFile);
-		return imgFile;
-
-	}
-	
-	  
-	private boolean checkDeviceIsAvailable(String deviceID) {
-		for (TestObjectDevice device : TestObjectPiranha.listDevices()) {
-			if (device.isAvailable && device.id.equalsIgnoreCase(deviceID)) {
-				return true;
-			}
-		}
-		return false;
-	}
 
 }
