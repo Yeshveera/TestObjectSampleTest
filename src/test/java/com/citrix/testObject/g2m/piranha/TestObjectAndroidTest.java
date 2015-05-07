@@ -33,10 +33,10 @@ public class TestObjectAndroidTest extends BaseTest {
 	public static Object[][] deviceList() {
 		return new Object[][] { 
 			{LG_G3_real},
-			{HTC_Nexus_9_real},
+/*			{HTC_Nexus_9_real},
 			{HTC_One_M8_real},
 			{Asus_Google_Nexus_7_2013_real},
-			{LG_Nexus_4_E960_real}
+			{LG_Nexus_4_E960_real}*/
 		};
 	}
 	
